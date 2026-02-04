@@ -1,59 +1,73 @@
-# Node.js TTS (Text-to-Speech) Интеграциясы
+# Node.js TTS (Text-to-Speech) Integration
 
-Бұл жоба [speechsynthesis.online](https://speechsynthesis.online/) сайты арқылы
-мәтінді дыбысқа (MP3) айналдыруға арналған автоматтандырылған скрипттер жинағы.
-Жобада браузерді басқару үшін **Patchright** (Playwright-тың жақсартылған
-нұсқасы) қолданылады.
+> **Automated text-to-speech synthesis tool using speechsynthesis.online** |
+> Convert text to natural-sounding MP3 audio files with Node.js | Browser
+> automation with Patchright/Playwright | Free TTS API alternative |
+> Multi-language voice synthesis | SSML support | Cloudflare bypass
 
-## 🚀 Негізгі мүмкіндіктер
+## 📖 Overview
 
-- **SSML 1007 қатесін түзету:** Сайтта жиі кездесетін "Prefix redefined" қатесін
-  сұранысты жолда ұстап қалып, XHTML аттар кеңістігін (namespace) тазарту арқылы
-  автоматты түрде шешеді.
-- **Cloudflare Turnstile Solver:** Cloudflare тексеруін (капча) автоматты түрде
-  анықтап, басатын логика енгізілген.
-- **Инкогнито (Clean) режимі:** `tts_clean.js` скрипті әр жолы таза сессия ашып,
-  жұмыс аяқталған соң уақытша деректерді өшіреді.
-- **Жарнаманы бұғаттау:** Трафикті үнемдеу және жылдамдықты арттыру үшін
-  жарнамалық модульдер мен аналитикалық скрипттер бұғатталған.
+A powerful **Node.js text-to-speech (TTS) automation tool** that leverages the
+[speechsynthesis.online](https://speechsynthesis.online/) web service to convert
+text into high-quality MP3 audio files. This project uses **Patchright** (an
+enhanced, undetectable fork of Playwright) for robust browser automation, making
+it an excellent free alternative to paid TTS APIs.
 
-## 📂 Жоба құрылымы
+**Perfect for:** Voice-over generation, audiobook creation, accessibility tools,
+language learning applications, content creation, podcast automation, and any
+project requiring programmatic text-to-speech conversion.
 
-- `tts.js` — Негізгі скрипт. Тұрақты профильді (`pw_profile`) қолданады, бұл
-  кэшті сақтауға көмектеседі.
-- `tts_clean.js` — Оңтайландырылған "таза" нұсқа. Әр жолы жаңа уақытша профиль
-  ашады және CSS/Суреттерден басқа артық ресурстарды жүктемейді.
-- `voices_info.json` — Жүйеде қолжетімді барлық дауыстардың тізімі мен
-  мәліметтері.
+**Keywords:** text to speech nodejs, tts automation, free tts api, speech
+synthesis, text to mp3, voice generation, playwright automation, browser
+automation tts, multilingual tts, ssml text to speech
 
-## ⚠️ Маңызды ескертулер
+## 🚀 Key Features
 
-1. **Сайттың тұрақтылығы:**
-   [speechsynthesis.online](https://speechsynthesis.online/) сайты кейде
-   техникалық себептерге байланысты немесе Cloudflare-дің қатал тексеруінен соң
-   дұрыс жұмыс істемей қалуы мүмкін. Мұндай жағдайда скрипт "Timeout" немесе
-   "Target page closed" қатесін беруі ықтимал.
-2. **voices_info.json:** Бұл файлда дауыстар өте көп, бірақ сайттың өзінде
-   кейбір дауыстар уақытша қолжетімсіз болуы мүмкін.
+- **SSML 1007 Error Fix:** Automatically resolves the common "Prefix redefined"
+  error by intercepting requests and cleaning up XHTML namespaces.
+- **Cloudflare Turnstile Solver:** Built-in logic to automatically detect and
+  bypass Cloudflare verification (captcha).
+- **Incognito (Clean) Mode:** The `tts_clean.js` script opens a fresh session
+  each time and clears temporary data after completion.
+- **Ad Blocking:** Advertising modules and analytics scripts are blocked to save
+  bandwidth and improve speed.
 
-## 🛠️ Орнату және қолдану
+## 📂 Project Structure
 
-### Орнату:
+- `tts.js` — Main script. Uses a persistent profile (`pw_profile`) to maintain
+  cache.
+- `tts_clean.js` — Optimized "clean" version. Opens a new temporary profile each
+  time and doesn't load unnecessary resources except CSS/Images.
+- `voices_info.json` — List and metadata of all available voices in the system.
+
+## ⚠️ Important Notes
+
+1. **Website Stability:** The
+   [speechsynthesis.online](https://speechsynthesis.online/) website may
+   occasionally fail to work properly due to technical issues or strict
+   Cloudflare verification. In such cases, the script may throw "Timeout" or
+   "Target page closed" errors.
+2. **voices_info.json:** This file contains many voices, but some may be
+   temporarily unavailable on the website itself.
+
+## 🛠️ Installation and Usage
+
+### Installation:
 
 ```powershell
 npm install
 ```
 
-### Іске қосу:
+### Running:
 
 ```powershell
-# Негізгі скрипт арқылы (текст өзгертуге болады)
-node tts.js "Сәлем, бұл тексеріс мәтіні."
+# Using the main script (you can change the text)
+node tts.js "Hello, this is a test message."
 
-# Таза (Incognito) режимде іске қосу
-node tts_clean.js "Бұл таза режимдегі дыбыстау."
+# Running in clean (Incognito) mode
+node tts_clean.js "This is speech synthesis in clean mode."
 ```
 
-## 📝 Лицензия
+## 📝 License
 
-Бұл жоба тек оқу және зерттеу мақсатында жасалған.
+This project is created for educational and research purposes only.
