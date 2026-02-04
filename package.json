@@ -1,0 +1,8 @@
+{
+  "name": "speechsynthesis-node",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "patchright": "^1.0.0"
+  }
+}
